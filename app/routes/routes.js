@@ -1,4 +1,8 @@
+const db = require('../../config/database');
+const BookDao = require('../dao/BookDao');
+
 module.exports = (app) => {
+
     app.get('/', (req, resp ) =>
         resp.send(`
             <html>
@@ -7,9 +11,27 @@ module.exports = (app) => {
         `)
     );
 
-    app.get('/second', (req, resp)=>{
+    app.get('/livros', (req, resp) => {
+
+        const bookDao = new BookDao(db);
+        bookDao.list()
+            .then(livros => resp.marko(
+                require('../views/books/list/list.marko'),
+                {
+                    livros: livros
+                }
+            ))
+            .catch(err => console.log(err));
+    });
+
+    app.get('/livros/form', (req, resp) => {
         resp.marko(
-            require('../views/books/list/list.marko')
-        )
-    })
+                require('../views/books/form/form.marko')
+            );
+    });
+
+    app.post('/livros', (req, resp) => {
+        console.log(req.body);
+    });
+
 }
