@@ -57,8 +57,8 @@ class BookDao{
     }
 
     update(book){
-        return new Promise((resolve, reject)=>{
-            this._db.run('UPDATE livros SET titulo = ?, preco = ?, descricao = ? WHERE ID = ?',
+        return new Promise((resolve, reject) => {
+            this._db.run('UPDATE livros SET titulo = ?, preco = ?, descricao = ? WHERE id = ?',
                 [
                     book.titulo,
                     book.preco,
