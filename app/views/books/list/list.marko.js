@@ -18,16 +18,16 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<html><head><meta charset=\"utf-8\"></head><body>");
+  out.w("<html><head><meta charset=\"utf-8\"><link rel=\"stylesheet\" href=\"/estatico/css/style-form.css\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"></head><body>");
 
   component_globals_tag({}, out);
 
-  out.w("<h1> Listagem de livros </h1><table id=\"livros\"><tr><td>ID</td><td>Título</td><td>Preço</td><td>Editar</td><td>Remover</td></tr>");
+  out.w("<header class=\"header\"><h1> Listagem de livros</h1></header><table id=\"livros\"><tr><td>ID</td><td>Título</td><td>Preço</td><td>Editar</td><td>Remover</td></tr>");
 
-  var for__12 = 0;
+  var for__15 = 0;
 
   marko_forEach(data.livros, function(livro) {
-    var keyscope__13 = "[" + ((for__12++) + "]");
+    var keyscope__16 = "[" + ((for__15++) + "]");
 
     out.w("<tr id=\"livro_" +
       marko_escapeXmlAttr(livro.id) +
@@ -48,7 +48,7 @@ function render(input, out, __component, component, state) {
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "23");
+  await_reorderer_tag({}, out, __component, "26");
 
   out.w("</body> </html>");
 }

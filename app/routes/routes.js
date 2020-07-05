@@ -4,11 +4,7 @@ const BookDao = require('../dao/BookDao');
 module.exports = (app) => {
 
     app.get('/', (req, resp ) =>
-        resp.send(`
-            <html>
-                <h1> Hello World! </h1> 
-            </html>
-        `)
+        resp.redirect('/livros')
     );
 
     app.get('/livros', (req, resp) => {
