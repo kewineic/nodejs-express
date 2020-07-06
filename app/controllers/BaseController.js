@@ -1,4 +1,4 @@
-const BookController = require('../controllers/BookController')
+const templates = require('../views/templates');
 
 class BaseController{
     constructor(){
@@ -7,13 +7,30 @@ class BaseController{
 
     static routes(){
         return {
-            home: '/'
-        }
+            home: '/',
+            login: '/login'
+        };
     }
 
     home(){
-        return (req, resp ) => resp.redirect(BookController.routes().list);
+        return (req, resp ) => resp.marko(
+            templates.base.home
+        );
     }
+
+    login(){
+        return (req, resp) => {
+            resp.marko(templates.base.login);
+        };
+    }
+
+    makeLogin(){
+        return (req, resp) => {
+
+        };
+    }
+
+
 }
 
 module.exports = BaseController;

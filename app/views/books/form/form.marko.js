@@ -22,7 +22,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header class=\"header\"> <h1>Cadastro de livros</h1></header><form action=\"/livros\" method=\"post\"><div>");
+  out.w("<header class=\"header\"> <h1>Cadastro de livros</h1></header><form action=\"/livros/form\" method=\"post\"><div>");
 
   var for__10 = 0;
 

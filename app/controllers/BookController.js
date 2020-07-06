@@ -1,6 +1,7 @@
 const db = require('../../config/database');
 const BookDao = require('../dao/BookDao');
 const {validationResult} = require('express-validator/check');
+const templates = require('../views/templates');
 
 class BookController{
     constructor(){
@@ -20,7 +21,7 @@ class BookController{
             const bookDao = new BookDao(db);
             bookDao.list()
                 .then(livros => resp.marko(
-                    require('../views/books/list/list.marko'),
+                    templates.books.list,
                     {
                         livros
                     }
@@ -32,7 +33,7 @@ class BookController{
     formAdd(){
         return (req, resp) => {
             resp.marko(
-                require('../views/books/form/form.marko'), { livro: req.body}
+                templates.books.form, { livro: req.body}
             );
         }
     }
@@ -44,7 +45,7 @@ class BookController{
             bookDao.listId(id)
                 .then(book => 
                     resp.marko(
-                        require('../views/books/form/form.marko'),
+                        templates.books.form,
                         {livro : book}
                     )   
                 ) 
@@ -59,7 +60,7 @@ class BookController{
             const errors = validationResult(req);
             if(!errors.isEmpty()){
                 return resp.marko(
-                    require('../views/books/form/form.marko'),
+                    templates.books.form,
                     {
                         livro: req.body,
                         validateErrors: errors.array()
