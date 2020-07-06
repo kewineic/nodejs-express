@@ -9,8 +9,9 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_loadTag = marko_helpers.t,
     component_globals_tag = marko_loadTag(require("marko/src/components/taglib/component-globals-tag")),
-    marko_escapeXmlAttr = marko_helpers.xa,
+    marko_forEach = marko_helpers.f,
     marko_escapeXml = marko_helpers.x,
+    marko_escapeXmlAttr = marko_helpers.xa,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -21,7 +22,21 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header class=\"header\"> <h1>Cadastro de livros</h1></header><form action=\"/livros\" method=\"post\">");
+  out.w("<header class=\"header\"> <h1>Cadastro de livros</h1></header><form action=\"/livros\" method=\"post\"><div>");
+
+  var for__10 = 0;
+
+  marko_forEach(data.validateErrors, function(errors) {
+    var keyscope__11 = "[" + ((for__10++) + "]");
+
+    out.w("<div>" +
+      marko_escapeXml(errors.param) +
+      " - " +
+      marko_escapeXml(errors.msg) +
+      "</div>");
+  });
+
+  out.w("</div>");
 
   if (data.livro.id) {
     out.w("<div><input type=\"hidden\" name=\"_method\" value=\"PUT\"><input type=\"hidden\" id=\"id\" name=\"id\" value=\"" +
@@ -39,7 +54,7 @@ function render(input, out, __component, component, state) {
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "23");
+  await_reorderer_tag({}, out, __component, "27");
 
   out.w("</body></html>");
 }

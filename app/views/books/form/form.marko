@@ -12,6 +12,12 @@
          </header>
 
         <form action="/livros" method="post">
+
+            <div>
+                <div for(errors in data.validateErrors)>
+                    ${errors.param} - ${errors.msg}
+                </div>
+            </div>
             <div if(data.livro.id)>
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" id="id" name="id" value="${data.livro.id}" />
