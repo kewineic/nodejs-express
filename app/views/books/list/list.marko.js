@@ -22,12 +22,12 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header class=\"header\"><h1> Listagem de livros</h1></header><table id=\"livros\"><tr><td>ID</td><td>Título</td><td>Preço</td><td>Editar</td><td>Remover</td></tr>");
+  out.w("<header class=\"header\"><h1> Listagem de livros</h1></header><table id=\"livros\"><tr><th>ID</th><th>Título</th><th>Preço</th><th>Editar</th><th>Remover</th></tr><tbody id=\"list\">");
 
-  var for__15 = 0;
+  var for__16 = 0;
 
   marko_forEach(data.livros, function(livro) {
-    var keyscope__16 = "[" + ((for__15++) + "]");
+    var keyscope__17 = "[" + ((for__16++) + "]");
 
     out.w("<tr id=\"livro_" +
       marko_escapeXmlAttr(livro.id) +
@@ -44,11 +44,11 @@ function render(input, out, __component, component, state) {
       "\" data-type=\"remocao\">Remover</a></td> </tr>");
   });
 
-  out.w("</table> <script src=\"/estatico/js/delete-book.js\">\r\n        </script> ");
+  out.w("</tbody></table> <script src=\"/estatico/js/delete-book.js\">\r\n        </script> ");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "26");
+  await_reorderer_tag({}, out, __component, "27");
 
   out.w("</body> </html>");
 }

@@ -46,7 +46,7 @@ function render(input, out, __component, component, state) {
 
   out.w("<div class=\"input-box\"><label for=\"titulo\">Titulo:</label><input type=\"text\" id=\"titulo\" name=\"titulo\" value=\"" +
     marko_escapeXmlAttr(data.livro.titulo) +
-    "\" placeholder=\"coloque o titulo\"></div><div class=\"input-box\"><label for=\"preco\">Preço:</label><input type=\"number\" id=\"preco\" name=\"preco\" value=\"" +
+    "\" placeholder=\"coloque o titulo\"></div><div class=\"input-box\"><label for=\"preco\">Preço:</label><input type=\"number\" id=\"preco\" name=\"preco\" step=\"0.01\" min=\"0\" value=\"" +
     marko_escapeXmlAttr(data.livro.preco) +
     "\" placeholder=\"150.25\"></div><div class=\"input-box\"><label for=\"descricao\">Descrição:</label><textarea cols=\"20\" rows=\"10\" id=\"descricao\" name=\"descricao\" placeholder=\"fale sobre o livro\">" +
     marko_escapeXml(data.livro.descricao) +

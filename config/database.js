@@ -52,8 +52,6 @@ bd.serialize(() => {
     bd.run(USUARIOS_SCHEMA);
     bd.run(INSERIR_USUARIO_1);
     bd.run(LIVROS_SCHEMA);
-    bd.run(INSERIR_LIVRO_1);
-    bd.run(INSERIR_LIVRO_2);
 
     bd.each("SELECT * FROM usuarios", (err, usuario) => {
         console.log('Usuario: ');

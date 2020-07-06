@@ -11,19 +11,21 @@
 
         <table id="livros">
             <tr>
-                <td>ID</td>
-                <td>Título</td>
-                <td>Preço</td>
-                <td>Editar</td>
-                <td>Remover</td>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Preço</th>
+                <th>Editar</th>
+                <th>Remover</th>
             </tr>
-            <tr id="livro_${livro.id}" for (livro in data.livros)> 
-                <td>${livro.id}</td>
-                <td>${livro.titulo}</td>
-                <td>${livro.preco}</td>
-                <td><a href="/livros/form/${livro.id}">Editar</a></td> 
-                <td><a href="#" data-ref="${livro.id}" data-type="remocao">Remover</a></td> 
-            </tr>
+            <tbody id="list">
+                <tr id="livro_${livro.id}" for (livro in data.livros)> 
+                    <td>${livro.id}</td>
+                    <td>${livro.titulo}</td>
+                    <td>${livro.preco}</td>
+                    <td><a href="/livros/form/${livro.id}">Editar</a></td> 
+                    <td><a href="#" data-ref="${livro.id}" data-type="remocao">Remover</a></td> 
+                </tr>
+            </tbody>
         </table> 
 
         <script src="/estatico/js/delete-book.js">
