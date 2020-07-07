@@ -9,21 +9,23 @@ class BookController{
 
     static routes(){
         return {
+            
+            authenticated: '/livros*',
             list: '/livros',
             register: '/livros/form',
             update: '/livros/form/:id',
             exclude: '/livros/:id',
-        }
+        };
     }
 
     list(){
        return (req, resp) => {
             const bookDao = new BookDao(db);
             bookDao.list()
-                .then(livros => resp.marko(
+                .then(books => resp.marko(
                     templates.books.list,
                     {
-                        livros
+                        books
                     }
                 ))
                 .catch(err => console.log(err));
